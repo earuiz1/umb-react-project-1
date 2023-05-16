@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
+import AverageCost from "./components/AverageCost";
 import ContainerLayout from "./components/UI/ContainerLayout";
 import { customStyles } from "./selectStyles";
 
@@ -36,6 +37,12 @@ const App = () => {
           styles={customStyles}
           placeholder={"Select a code..."}
         />
+        {selectedOption !== null && (
+          <AverageCost
+            id={selectedOption?.value}
+            code={selectedOption?.label}
+          />
+        )}
       </ContainerLayout>
     </div>
   );
