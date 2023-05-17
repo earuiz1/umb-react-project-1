@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import AverageCost from "./components/AverageCost";
+import Form from "./components/Form";
 import ContainerLayout from "./components/UI/ContainerLayout";
 import { customStyles } from "./selectStyles";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [options, setOptions] = useState([]);
@@ -31,6 +34,7 @@ const App = () => {
   return (
     <div className="min-h-screen flex justify-center items-center w-full">
       <ContainerLayout>
+        <ToastContainer />
         <Select
           options={options}
           onChange={setSelectedOption}
@@ -38,10 +42,13 @@ const App = () => {
           placeholder={"Select a code..."}
         />
         {selectedOption !== null && (
-          <AverageCost
-            id={selectedOption?.value}
-            code={selectedOption?.label}
-          />
+          <>
+            <AverageCost
+              id={selectedOption?.value}
+              code={selectedOption?.label}
+            />
+            <Form id={selectedOption?.value} />
+          </>
         )}
       </ContainerLayout>
     </div>
