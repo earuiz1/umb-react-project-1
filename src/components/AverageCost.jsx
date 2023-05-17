@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-const AverageCost = ({ id, code }) => {
-  const [cptCodes, setCptCodes] = useState([]);
-
+const AverageCost = ({ id, code, cptCodes, setCptCodes }) => {
   //Fetch the costs
   useEffect(() => {
     const fetchAvgCost = async () => {
@@ -37,6 +35,8 @@ const AverageCost = ({ id, code }) => {
 AverageCost.propTypes = {
   id: PropTypes.number.isRequired,
   code: PropTypes.string.isRequired,
+  cptCodes: PropTypes.array.isRequired,
+  setCptCodes: PropTypes.func.isRequired,
 };
 
 export default AverageCost;

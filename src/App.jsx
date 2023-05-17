@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [cptCodes, setCptCodes] = useState([]);
 
   //Get the list of codes
   useEffect(() => {
@@ -28,9 +29,6 @@ const App = () => {
 
     fetchCodes();
   }, []);
-
-  console.log(selectedOption);
-
   return (
     <div className="min-h-screen flex justify-center items-center w-full">
       <ContainerLayout>
@@ -46,8 +44,14 @@ const App = () => {
             <AverageCost
               id={selectedOption?.value}
               code={selectedOption?.label}
+              cptCodes={cptCodes}
+              setCptCodes={setCptCodes}
             />
-            <Form id={selectedOption?.value} />
+            <Form
+              id={selectedOption?.value}
+              cptCodes={cptCodes}
+              setCptCodes={setCptCodes}
+            />
           </>
         )}
       </ContainerLayout>

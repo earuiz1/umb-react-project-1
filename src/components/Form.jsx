@@ -3,21 +3,23 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Form = ({ id }) => {
+const Form = ({ id, cptCodes, setCptCodes }) => {
   const onSubmit = async (values) => {
+    //console.log(values);
     try {
       const response = await fetch(`http://localhost:3001/api/costs`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cptCodeId: id,
-          cost: values.newCost,
+          cost: Number(values.newCost),
         }),
       });
 
       const data = await response.json();
 
-      console.log(data);
+      //Update the state with the new data
+      setCptCodes([...cptCodes, data]);
 
       //Show a success toast after submitting a new cost
       toast.success("New cost added!", {
@@ -93,6 +95,8 @@ const Form = ({ id }) => {
 
 Form.propTypes = {
   id: PropTypes.number.isRequired,
+  cptCodes: PropTypes.array.isRequired,
+  setCptCodes: PropTypes.func.isRequired,
 };
 
 export default Form;
