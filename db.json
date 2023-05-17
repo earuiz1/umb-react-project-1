@@ -131,21 +131,6 @@
       "cost": 75,
       "facilityType": "Urgent Care",
       "copay": 15
-    },
-    {
-      "cptCodeId": 1,
-      "cost": 56,
-      "id": 16
-    },
-    {
-      "cptCodeId": 1,
-      "cost": 50,
-      "id": 17
-    },
-    {
-      "cptCodeId": 2,
-      "cost": 50,
-      "id": 18
     }
   ]
 }

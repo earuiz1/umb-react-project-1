@@ -58,14 +58,16 @@ const Form = ({ id, cptCodes, setCptCodes }) => {
     formState: { errors },
   } = useForm();
 
-  console.log("Form");
   return (
     <form
       className="w-full flex flex-col gap-4"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col gap-2">
-        <label htmlFor="newCost" className="font-semibold text-slate-100">
+        <label
+          htmlFor="newCost"
+          className="font-semibold text-slate-100 text-sm md:text-base"
+        >
           Enter new cost:
         </label>
         <input
@@ -78,7 +80,7 @@ const Form = ({ id, cptCodes, setCptCodes }) => {
           })}
         />
         {errors.newCost && (
-          <p className="text-red-100 font-bold text-sm">
+          <p className="text-slate-100 font-bold text-sm md:text-base">
             {errors.newCost.message}
           </p>
         )}
