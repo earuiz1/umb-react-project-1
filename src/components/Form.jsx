@@ -13,6 +13,8 @@ const Form = ({ id, cptCodes, setCptCodes }) => {
         body: JSON.stringify({
           cptCodeId: id,
           cost: Number(values.newCost),
+          facilityType: values.newFacilityType,
+          copay: Number(values.newCopay),
         }),
       });
 
@@ -63,7 +65,7 @@ const Form = ({ id, cptCodes, setCptCodes }) => {
       className="w-full flex flex-col gap-4"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="newCost"
           className="font-semibold text-slate-100 text-sm md:text-base"
@@ -71,17 +73,58 @@ const Form = ({ id, cptCodes, setCptCodes }) => {
           Enter new cost:
         </label>
         <input
-          type="number"
           name="newCost"
           className="w-full p-2 rounded-md outline-none focus:border-[3px] focus:border-[#ac162c]"
           {...register("newCost", {
-            required: "New cost is required!",
-            min: { value: 0, message: "New cost must be a positive number!" },
+            required: "Cost is required!",
+            min: { value: 0, message: "Cost must be a positive number!" },
           })}
         />
         {errors.newCost && (
-          <p className="text-slate-100 font-bold text-sm md:text-base">
+          <p className="text-red-500 font-bold text-sm md:text-base underline">
             {errors.newCost.message}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor="newFacilityType"
+          className="font-semibold text-slate-100 text-sm md:text-base"
+        >
+          Enter new Facility Type:
+        </label>
+        <input
+          type="text"
+          name="newFacilityType"
+          className="w-full p-2 rounded-md outline-none focus:border-[3px] focus:border-[#ac162c]"
+          {...register("newFacilityType", {
+            required: "Facility Type is required!",
+          })}
+        />
+        {errors.newFacilityType && (
+          <p className="text-red-500 font-bold text-sm md:text-base underline">
+            {errors.newFacilityType.message}
+          </p>
+        )}
+      </div>
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor="copay"
+          className="font-semibold text-slate-100 text-sm md:text-base"
+        >
+          Enter new copay:
+        </label>
+        <input
+          name="newCopay"
+          className="w-full p-2 rounded-md outline-none focus:border-[3px] focus:border-[#ac162c]"
+          {...register("newCopay", {
+            required: "Copay is required!",
+            min: { value: 0, message: "Copay must be a positive number!" },
+          })}
+        />
+        {errors.newCopay && (
+          <p className="text-red-500 font-bold text-sm md:text-base underline">
+            {errors.newCopay.message}
           </p>
         )}
       </div>

@@ -27,7 +27,7 @@ const AverageCost = ({ id, code, cptCodes, setCptCodes }) => {
 
   return (
     <span className="text-slate-900 font-semibold bg-slate-100 text-sm md:text-base rounded-sm py-2 px-6 self-center">
-      Average cost of code {code} is {sumAvgCost.toFixed(2)}
+      Average cost of code {code} is ${sumAvgCost.toFixed(2)}
     </span>
   );
 };
